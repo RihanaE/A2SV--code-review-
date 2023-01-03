@@ -1,0 +1,28 @@
+store=[]
+for i in range(int(input())):
+    store.append(input())
+
+chr_length=len(store[0])
+length=len(store)
+checker="?"
+output=[]
+
+for i in range(chr_length):
+    for j in range(length):
+        if checker == "?" and ord("a") <= ord(store[j][i]) <= ord("z"):
+            checker =store[j][i]
+
+        elif checker != "?" and store[j][i] != checker and store[j][i] != "?":
+            output.append("?")
+            checker="?"
+            break
+
+        if j == length - 1:
+            if checker == "?":
+                output.append("a")
+
+            else:
+                output.append(checker)
+                checker="?"
+
+print("".join(output))
